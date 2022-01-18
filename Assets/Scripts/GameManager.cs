@@ -73,15 +73,14 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        lastBallVelocity = currentBall.Rigidbody.velocity;
-        currentBall.SetVelocity(Vector3.zero);
+        currentBall.PauseMovement();
         GameState = GameStates.Pause;
         inputController.Enabled = false;
     }
 
     public void ResumeGame()
     {
-        currentBall.SetVelocity(lastBallVelocity);
+        currentBall.ResumeMovement();
         GameState = GameStates.BallMoves;
         inputController.Enabled = true;
     }
@@ -159,7 +158,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Pushing the ball
-        currentBall.SetVelocity(
+        currentBall.StartMovement(
             CalculateBallVelocity(playerTransform.position, ballStartPosition.position));
 
         GameState = GameStates.BallMoves;
