@@ -6,13 +6,10 @@ public class InputController : MonoBehaviour
     public bool IsDragging { get; private set; }
     public Vector2 StartTouch { get; private set; }
     public Vector2 DragDelta { get; private set; }
-    public bool Enabled { get; set; }
     public Action ActionAfterReset { get; set; }
 
     private void Update()
     {
-        if (!Enabled) return;
-
         //getting start touch position
         
 #if UNITY_EDITOR

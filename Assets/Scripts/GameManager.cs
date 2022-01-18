@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         GameState = GameStates.NoBall;
-        inputController.Enabled = true;
+        inputController.enabled = true;
         inputController.ActionAfterReset = PushBall;
         CreateBall();
     }
@@ -74,14 +74,14 @@ public class GameManager : MonoBehaviour
     {
         currentBall.PauseMovement();
         GameState = GameStates.Pause;
-        inputController.Enabled = false;
+        inputController.enabled = false;
     }
 
     public void ResumeGame()
     {
         currentBall.ResumeMovement();
         GameState = GameStates.BallMoves;
-        inputController.Enabled = true;
+        inputController.enabled = true;
     }
 
     #region Drag Logic

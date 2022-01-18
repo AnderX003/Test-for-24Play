@@ -9,12 +9,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text startOrResumeButtonText;
     [SerializeField] private Text levelMonitorText;
     private bool gameWasStarted;
+    private static readonly int Out = Animator.StringToHash("Out");
+    private static readonly int In = Animator.StringToHash("In");
 
     #region Menu
  
     public void StartOrResumeButton()
     {
-        menuPanelAnimator.SetTrigger("Out");
+        menuPanelAnimator.SetTrigger(Out);
         
         if (!gameWasStarted)
         {
@@ -39,7 +41,7 @@ public class UIManager : MonoBehaviour
     
     public void PauseButton()
     {
-        menuPanelAnimator.SetTrigger("In");
+        menuPanelAnimator.SetTrigger(In);
         gameManager.PauseGame();
     }
     
