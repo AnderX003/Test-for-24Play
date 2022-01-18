@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform ballStartPosition;
     private BallController currentBall;
     private Transform arrowTransform;
-    private Vector3 lastBallVelocity;
     private int level = 1;
     private int currentAimsCounter = 3;
     private bool arrowIsCreated;
