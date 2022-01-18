@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IObstacle
 {
     [SerializeField] private GameManager manager;
     [SerializeField] private Rigidbody enemyRigidbody;
@@ -28,5 +28,11 @@ public class EnemyController : MonoBehaviour
     public void IncreaseSpeed(float additionSpeed)
     {
         enemySpeed += additionSpeed;
+    }
+
+    public void HitObstacle(BallController ball)
+    {
+        manager.OnBallDestroyed(false);
+        ball.DestroyBall();
     }
 }

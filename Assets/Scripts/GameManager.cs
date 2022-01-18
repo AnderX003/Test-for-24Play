@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     [SerializeField] private GameConfig config;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private InputController inputController;
@@ -23,6 +26,11 @@ public class GameManager : MonoBehaviour
 
     public GameStates GameState { private set; get; } = GameStates.Pause;
 
+    private void Start()
+    {
+        Instance = this;
+    }
+
     public void StartGame()
     {
         GameState = GameStates.NoBall;
@@ -34,7 +42,6 @@ public class GameManager : MonoBehaviour
     private void CreateBall()
     {
         currentBall = Instantiate(ballPrefab, parentTransform).GetComponent<BallController>();
-        currentBall.Manager = this;
         enemy.CurrentBall = currentBall.transform;
         lastBallWasDestroyed = false;
     }
