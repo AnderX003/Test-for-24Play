@@ -1,7 +1,9 @@
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameConfig config;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private InputController inputController;
     [SerializeField] private EnemyController enemy;
@@ -11,12 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform parentTransform;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Transform ballStartPosition;
-    [SerializeField] private int difficultyRise;
-    [SerializeField] private float startSensitivity;
-    [SerializeField] private float draggingSensitivity;
-    [SerializeField] private float ballSpeed;
-    [SerializeField] private float playerBoarder;
-    [SerializeField] private float arrowScaleRatio;
     private BallController currentBall;
     private Transform arrowTransform;
     private Vector3 lastBallVelocity;
@@ -64,21 +60,21 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(aimsPrefab, parentTransform);
         level++;
-        enemy.IncreaseSpeed(difficultyRise);
+        enemy.IncreaseSpeed(config.difficultyRise);
         uiManager.UpdateLevelMonitorText(level);
     }
 
     public void PauseGame()
     {
         lastBallVelocity = currentBall.Rigidbody.velocity;
-        currentBall.Velocity = Vector3.zero;
+        currentBall.SetVelocity(Vector3.zero);
         GameState = GameStates.Pause;
         inputController.Enabled = false;
     }
 
     public void ResumeGame()
     {
-        currentBall.Velocity = lastBallVelocity;
+        currentBall.SetVelocity(lastBallVelocity);
         GameState = GameStates.BallMoves;
         inputController.Enabled = true;
     }
@@ -88,7 +84,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (!inputController.IsDragging) return;
-        if (inputController.DragDelta.magnitude <= startSensitivity) return;
+        if (inputController.DragDelta.magnitude <= config.startSensitivity) return;
 
         if (!arrowIsCreated)
         {
@@ -104,14 +100,14 @@ public class GameManager : MonoBehaviour
 
     private Vector3 CalculatePlayerPosition(Vector3 originPosition, Vector2 dragDelta)
     {
-        Vector3 playerPosition = originPosition + draggingSensitivity *
+        Vector3 playerPosition = originPosition + config.draggingSensitivity *
             new Vector3(dragDelta.y >= 0 ? dragDelta.x : -dragDelta.x,
                 0.5f, Mathf.Abs(dragDelta.y));
 
         float hypothesis = CalculateHypothesis(playerPosition, originPosition);
-        if (hypothesis > playerBoarder)
+        if (hypothesis > config.playerBoarder)
         {
-            float alpha = playerBoarder / (hypothesis - playerBoarder);
+            float alpha = config.playerBoarder / (hypothesis - config.playerBoarder);
             playerPosition =
                 new Vector3((originPosition.x + alpha * playerPosition.x) / (1 + alpha), 0.5f,
                     (originPosition.z + alpha * playerPosition.z) / (1 + alpha));
@@ -129,7 +125,7 @@ public class GameManager : MonoBehaviour
 
     private Vector3 CalculateArrowScale(Vector3 originPosition, Vector3 playerPosition)
     {
-        float scale = CalculateHypothesis(playerPosition, originPosition) * arrowScaleRatio;
+        float scale = CalculateHypothesis(playerPosition, originPosition) * config.arrowScaleRatio;
         return new Vector3(scale, 1, scale);
     }
 
@@ -156,14 +152,15 @@ public class GameManager : MonoBehaviour
         }
 
         //Pushing the ball
-        currentBall.Velocity = CalculateBallVelocity(playerTransform.position, ballStartPosition.position);
+        currentBall.SetVelocity(
+            CalculateBallVelocity(playerTransform.position, ballStartPosition.position));
 
         GameState = GameStates.BallMoves;
     }
 
     private Vector3 CalculateBallVelocity(Vector3 playerPosition, Vector3 originPosition)
     {
-        return ballSpeed * new Vector3(
+        return config.ballSpeed * new Vector3(
             playerPosition.x - originPosition.x,
             0, playerPosition.z - originPosition.z);
     }
