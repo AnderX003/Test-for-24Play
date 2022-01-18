@@ -44,11 +44,11 @@ public class UIManager : MonoBehaviour
         menuPanelAnimator.SetTrigger(In);
         gameManager.PauseGame();
     }
-    
+
     public void UpdateLevelMonitorText(int level)
     {
-        levelMonitorText.text = "Level " + level.ToString();
-    }
+        levelMonitorText.text = $"Level {level}";
+}
 
     #endregion
 }
