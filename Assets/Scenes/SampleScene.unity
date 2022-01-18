@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 703240214}
   - component: {fileID: 703240213}
   - component: {fileID: 703240212}
+  - component: {fileID: 703240215}
   m_Layer: 0
   m_Name: wall_Home
   m_TagString: Untagged
@@ -484,6 +485,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703240210}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &703240215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703240210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a07841f8dcc98547b820ff61ef18116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,8 +1009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14cd93d6cad8c94a893f329772f4c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 1744064531}
   cameraTransform: {fileID: 963194228}
+  cameraSetup: {fileID: 11400000, guid: 0aeee46c3625e004dbfe29bd71f3c414, type: 2}
 --- !u!1 &965466928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1023,7 @@ GameObject:
   - component: {fileID: 965466932}
   - component: {fileID: 965466931}
   - component: {fileID: 965466930}
+  - component: {fileID: 965466933}
   m_Layer: 0
   m_Name: wall_Back
   m_TagString: wall_back
@@ -1093,6 +1107,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965466928}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &965466933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965466928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51887251725e9b74681dff5db238d092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1101715019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d352a2681f55044805cb4ee74ef77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: c0e573c28d8308448978dacfa50df9f3, type: 2}
   uiManager: {fileID: 1744064533}
   inputController: {fileID: 1101715023}
   enemy: {fileID: 173587531}
@@ -1152,12 +1179,6 @@ MonoBehaviour:
   parentTransform: {fileID: 1101715020}
   playerTransform: {fileID: 1347623068}
   ballStartPosition: {fileID: 1211937755}
-  difficultyRise: 1
-  startSensitivity: 40
-  draggingSensitivity: 0.02
-  ballSpeed: 2
-  playerBoarder: 8
-  arrowScaleRatio: 0.05
 --- !u!114 &1101715023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,6 +1549,7 @@ GameObject:
   - component: {fileID: 1527819069}
   - component: {fileID: 1527819068}
   - component: {fileID: 1527819067}
+  - component: {fileID: 1527819070}
   m_Layer: 0
   m_Name: wall_L
   m_TagString: wall_side
@@ -1611,6 +1633,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527819065}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1527819070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527819065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a07841f8dcc98547b820ff61ef18116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1628573676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,7 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f620b8d4edc4a84d907fef17d9ba295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appManager: {fileID: 963194229}
+  cameraPositionSetup: {fileID: 0}
   gameManager: {fileID: 1101715021}
   menuPanelAnimator: {fileID: 795147116}
   startOrResumeButtonText: {fileID: 1685883865}
@@ -2261,6 +2295,7 @@ GameObject:
   - component: {fileID: 1930290511}
   - component: {fileID: 1930290510}
   - component: {fileID: 1930290509}
+  - component: {fileID: 1930290512}
   m_Layer: 0
   m_Name: wall_R
   m_TagString: wall_side
@@ -2344,6 +2379,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930290507}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1930290512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930290507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a07841f8dcc98547b820ff61ef18116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2315796700549428185
 PrefabInstance:
   m_ObjectHideFlags: 0
