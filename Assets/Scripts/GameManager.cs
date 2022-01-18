@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform ballStartPosition;
     private BallController currentBall;
     private Transform arrowTransform;
+    private GameStates stateBeforePause;
     private int level = 1;
     private int currentAimsCounter = 3;
     private bool arrowIsCreated;
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         currentBall.PauseMovement();
+        stateBeforePause = GameState;
         GameState = GameStates.Pause;
         inputController.enabled = false;
     }
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         currentBall.ResumeMovement();
-        GameState = GameStates.BallMoves;
+        GameState = stateBeforePause;
         inputController.enabled = true;
     }
 
