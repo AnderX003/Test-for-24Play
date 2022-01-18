@@ -47,8 +47,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLevelMonitorText(int level)
     {
-        levelMonitorText.text = $"Level {level}";
-}
+        levelMonitorText.text = $"Level {level.ToString()}";
+    }
 
     #endregion
 }
