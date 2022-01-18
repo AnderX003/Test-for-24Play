@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private AppManager appManager;
+    [SerializeField] private CameraPositionSetup cameraPositionSetup;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Animator menuPanelAnimator;
     [SerializeField] private Text startOrResumeButtonText;
@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
     public void ExitButton()
     {
-        appManager.Exit();
+        Application.Quit();
     }
     
     #endregion
