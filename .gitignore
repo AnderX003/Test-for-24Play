@@ -1,0 +1,17 @@
+
+/.idea
+/Library
+/Logs
+/obj
+/Packages
+/ProjectSettings
+/Temp
+/UserSettings
+/.gitattributes
+
+#/Assets/_Trash
+
+#*.meta
+*.sln
+*.csproj
+*.keystore
